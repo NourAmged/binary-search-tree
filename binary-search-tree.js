@@ -42,7 +42,7 @@ class Tree {
         }
     }
 
-    insetToArray(value) {
+    #insetToArray(value) {
         this.array.push(value);
         this.array.sort((a, b) => a - b);
     }
@@ -61,7 +61,7 @@ class Tree {
         if (value < node.data) {
             if (node.left === null) {
                 node.left = new Node(value);
-                this.insetToArray(value);
+                this.#insetToArray(value);
 
             } else {
                 this.insert(value, node.left);
@@ -69,7 +69,7 @@ class Tree {
         } else {
             if (node.right === null) {
                 node.right = new Node(value);
-                this.insetToArray(value);
+                this.#insetToArray(value);
 
             } else {
                 this.insert(value, node.right);
@@ -261,12 +261,12 @@ const tree = new Tree(array);
 
 console.log(`is Tree balanced ? ${tree.isBalanced()}`);
 
-console.log("Tree elements in levelOrder");
-
 let levelOrder;
 let preOrder;
 let postOrder;
 let inOrder;
+
+console.log("Tree elements in levelOrder");
 
 levelOrder = tree.levelOrder((data) => { return data });
 console.log(levelOrder.join(' -> '));
@@ -296,6 +296,8 @@ console.log(`is Tree balanced ? ${tree.isBalanced()}`);
 tree.reBalance();
 
 console.log(`is Tree balanced ? ${tree.isBalanced()}`);
+
+console.log("Tree elements in levelOrder");
 
 levelOrder = tree.levelOrder((data) => { return data });
 console.log(levelOrder.join(' -> '));
